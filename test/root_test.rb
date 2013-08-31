@@ -11,11 +11,15 @@ class RootTest < Test::Unit::TestCase
     end
 
     should "be created from an object" do
-      assert_nothing_raised(Exception) { KeyValueTree.from(@hash_object) }
+      root = nil
+      assert_nothing_raised(Exception) { root = KeyValueTree.from(@hash_object) }
+      assert_instance_of(KeyValueTree::Root, root)
     end
 
     should "be created from an object with store" do
-      assert_nothing_raised(Exception) { KeyValueTree.from(@hash_object, @store) }
+      root = nil
+      assert_nothing_raised(Exception) { root = KeyValueTree.from(@hash_object, @store) }
+      assert_instance_of(KeyValueTree::Root, root)
     end
 
 
