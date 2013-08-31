@@ -18,6 +18,10 @@ module KeyValueTree
       @hash.delete(key)
     end
 
+    def hash
+      @hash
+    end
+
   end
 
 end
