@@ -1,5 +1,6 @@
 require "keyvaluetree/version"
+require 'keyvaluetree/memory_store'
 
-module Keyvaluetree
+module KeyValueTree
   # Your code goes here...
 end
