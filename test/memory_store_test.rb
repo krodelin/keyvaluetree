@@ -1,9 +1,4 @@
-require "test/unit"
-require "shoulda-context"
-require 'minitest/reporters'
-MiniTest::Reporters.use!
-
-require "keyvaluetree"
+require "common"
 
 class MemoryStoreTest < Test::Unit::TestCase
 
@@ -34,9 +29,9 @@ class MemoryStoreTest < Test::Unit::TestCase
     end
 
     should "access the hash" do
-      assert_nothing_raised(Exception) { @store.hash }
+      assert_nothing_raised(Exception) { @store.to_hash }
       @store.set(@key, @value)
-      assert_equal @value, @store.hash[@key]
+      assert_equal @value, @store.to_hash[@key]
     end
 
   end
