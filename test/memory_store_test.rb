@@ -10,30 +10,33 @@ class MemoryStoreTest < Test::Unit::TestCase
   context "a MemoryStore" do
     setup do
       @store = KeyValueTree::MemoryStore.new()
+      @key = :key
+      @nilkey = :nonexistent
+      @value = 42
     end
 
     should "set a value" do
-      key = :key
-      value = 42
-      assert_equal value, @store.set(key, value)
+      assert_equal @value, @store.set(@key, @value)
     end
 
     should "get a value" do
-      key = :key
-      value = 42
-      @store.set(key, value)
-      assert_equal value, @store.get(key)
-      assert_equal nil, @store.get(:nonexistent)
+      @store.set(@key, @value)
+      assert_equal(@value, @store.get(@key))
+      assert_equal(nil, @store.get(:@nilkey))
     end
 
     should "delete a value" do
-      key= :key
-      assert_equal nil, @store.get(key)
-      value = 42
-      @store.set(key, value)
-      assert_equal value, @store.get(key)
-      @store.del(key)
-      assert_equal nil, @store.get(:nonexistent)
+      assert_equal nil, @store.get(@key)
+      @store.set(@key, @value)
+      assert_equal @value, @store.get(@key)
+      @store.del(@key)
+      assert_equal nil, @store.get(:@nilkey)
+    end
+
+    should "access the hash" do
+      assert_nothing_raised(Exception) { @store.hash }
+      @store.set(@key, @value)
+      assert_equal @value, @store.hash[@key]
     end
 
   end
