@@ -2,7 +2,7 @@ module KeyValueTree
 
   class Hash
 
-    def initialize(key=nil, parent = nil, store = KeyValueTree::MemortyStore.new())
+    def initialize(store = KeyValueTree::MemoryStore.new(), key=nil, parent = nil)
       @key = key.to_s
       @parent = parent
       @store = store
@@ -11,7 +11,7 @@ module KeyValueTree
     def [] (key)
       value = @store.key(key_path_string(key))
       return value unless value.nil?
-      return KeyValueTree::Hash.new(key, self, @store)
+      return KeyValueTree::Hash.new(@store, key, self)
     end
 
     def []= (key, value)
@@ -69,6 +69,10 @@ module KeyValueTree
 
     def delete(key)
       @store.delete(key_path_string(key.to_s))
+    end
+
+    def keys
+      @store.keys_starting_with(key_path_string()).map { |each| each.split(".").first }.uniq
     end
 
   end
