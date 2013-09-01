@@ -5,7 +5,7 @@ require 'keyvaluetree/version'
 
 Gem::Specification.new do |spec|
   spec.name = "keyvaluetree"
-  spec.version = Keyvaluetree::VERSION
+  spec.version = KeyValueTree::VERSION
   spec.authors = ["Udo Schneider"]
   spec.email = ["Udo.Schneider@homeaddress.de"]
   spec.description = %q{Storing hierarchical data in plain KeyValueStores}
@@ -20,4 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "shoulda-context"
 end

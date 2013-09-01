@@ -1,3 +1,3 @@
-module Keyvaluetree
-  VERSION = "0.0.1"
+module KeyValueTree
+  VERSION = '0.0.2'
 end
