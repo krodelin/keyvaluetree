@@ -17,7 +17,7 @@ class MemoryStoreTest < Test::Unit::TestCase
     should "get a value" do
       @store.store(@key, @value)
       assert_equal(@value, @store.key(@key))
-      assert_equal(nil, @store.key(:@nilkey))
+      assert_equal(nil, @store.key(@nilkey))
     end
 
     should "delete a value" do
