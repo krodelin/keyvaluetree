@@ -68,8 +68,16 @@ class HashTest < Test::Unit::TestCase
 
       @root.delete(:two)
       assert_equal 1, @store.keys.size
-
     end
+
+    should "return keys" do
+      @root.one.a.A = 'A'
+      @root.one.a.B = 'B'
+      @root.two.b.A = 'AA'
+      @root.two.b.B = 'BB'
+      assert_same_elements ["one", "two"], @root.keys
+    end
+
   end
 
 end
