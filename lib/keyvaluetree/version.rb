@@ -1,3 +1,3 @@
 module KeyValueTree
-  VERSION = '0.0.2dev'
+  VERSION = '0.0.3'
 end
