@@ -8,22 +8,22 @@ class HashTest < Test::Unit::TestCase
       @hash_object ={:a => :b}
       @array_object = [:a, :b]
       @store = KeyValueTree::MemoryStore.new()
-      @root = KeyValueTree::Hash.new(nil, nil, @store)
+      @root = KeyValueTree::Hash.new(@store)
       @key1 = 'key1'
       @value1 = 'value1'
       @key2 = 'key2'
       @value2 = 'key2'
     end
 
-    should "be created from an object" do
+    should "create w/o arguments" do
       root = nil
-      assert_nothing_raised(Exception) { root = KeyValueTree::Hash.new(@hash_object, nil, @store) }
+      assert_nothing_raised(Exception) { root = KeyValueTree::Hash.new(@store) }
       assert_instance_of(KeyValueTree::Hash, root)
     end
 
-    should "be created from an object with store" do
+    should "create with store" do
       root = nil
-      assert_nothing_raised(Exception) { root = KeyValueTree::Hash.new(@hash_object, nil, @store) }
+      assert_nothing_raised(Exception) { root = KeyValueTree::Hash.new(@store) }
       assert_instance_of(KeyValueTree::Hash, root)
     end
 
