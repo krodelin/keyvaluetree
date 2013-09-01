@@ -1,26 +1,31 @@
 module KeyValueTree
 
-  class MemoryStore
+  class MemoryStore < Store
 
     def initialize(hash={})
       @hash = hash
     end
 
-    def get(key)
-      @hash[key]
+    def key(key)
+      @hash[key.to_s]
     end
 
-    def set(key, value)
-      @hash[key] = value
+    def store(key, value)
+      @hash[key.to_s] = value
     end
 
-    def del(key)
-      @hash.delete(key)
+    def basic_delete(key)
+      @hash.delete(key.to_s)
+    end
+
+    def keys
+      @hash.keys
     end
 
     def to_hash
       @hash
     end
+
 
   end
 

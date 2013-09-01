@@ -1,13 +1,10 @@
 require "keyvaluetree/version"
 
+require 'keyvaluetree/store'
 require 'keyvaluetree/memory_store'
 
-require 'keyvaluetree/root'
+require 'keyvaluetree/hash'
 
 module KeyValueTree
-
-  def self.from(object, store=MemoryStore.new())
-    KeyValueTree::Root.from(object, store)
-  end
 
 end
