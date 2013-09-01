@@ -2,6 +2,8 @@ module KeyValueTree
 
   class Hash
 
+    attr_reader :store
+
     def initialize(store = KeyValueTree::MemoryStore.new(), key=nil, parent = nil)
       @key = key.to_s
       @parent = parent
@@ -9,15 +11,16 @@ module KeyValueTree
     end
 
     def [] (key)
+      return self if key.nil?
       value = @store.key(key_path_string(key))
       return value unless value.nil?
       return KeyValueTree::Hash.new(@store, key, self)
     end
 
     def []= (key, value)
-      if value.is_a?(Hash)
+      if value.is_a?(::Hash)
         value.each do |hash_key, hash_value|
-          self[key_path_string(key)][hash_key] = hash_value
+          self[key][hash_key] = hash_value
         end
         return
       end
@@ -75,6 +78,9 @@ module KeyValueTree
       @store.keys_starting_with(key_path_string()).map { |each| each.split(".").first }.uniq
     end
 
+    def import(object)
+      self[nil] = object
+    end
   end
 
 end

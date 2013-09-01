@@ -26,7 +26,6 @@ module KeyValueTree
       @hash
     end
 
-
   end
 
 end

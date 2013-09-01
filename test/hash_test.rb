@@ -5,7 +5,7 @@ class HashTest < Test::Unit::TestCase
   context "Hash" do
 
     setup do
-      @hash_object ={:a => :b}
+      @hash_object = {"a" => "b", "c" => {"d" => "e", "f" => "g"}}
       @array_object = [:a, :b]
       @store = KeyValueTree::MemoryStore.new()
       @root = KeyValueTree::Hash.new(@store)
@@ -77,6 +77,16 @@ class HashTest < Test::Unit::TestCase
       @root.two.b.B = 'BB'
       assert_same_elements ["one", "two"], @root.keys
     end
+
+    should "import existing object" do
+      @root.import(@hash_object)
+      assert_same_elements ["a", "c"], @root.keys
+      assert_same_elements ["a", "c.d", "c.f"], @store.keys
+      assert_equal "b", @root.a
+      assert_equal "e", @root.c.d
+      assert_equal "g", @root.c.f
+    end
+
 
   end
 
