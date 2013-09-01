@@ -2,7 +2,7 @@ module KeyValueTree
 
   class Hash
 
-    def initialize(key=nil, parent = nil, store = KeyValueTree::MemortyStore.new())
+    def initialize(key=nil, parent = nil, store = KeyValueTree::MemoryStore.new())
       @key = key.to_s
       @parent = parent
       @store = store
