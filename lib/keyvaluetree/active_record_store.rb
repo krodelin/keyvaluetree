@@ -24,7 +24,7 @@ module KeyValueTree
     end
 
     def keys
-      @storage_class.all.map { |each| each[@key_symbol] }
+      @storage_class.all.map { |each| each[@key_symbol]ve }
     end
 
     def keys_starting_with(key)
