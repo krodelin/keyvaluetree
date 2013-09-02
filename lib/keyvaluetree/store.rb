@@ -18,21 +18,21 @@ module KeyValueTree
       raise NotImplementedError
     end
 
-    def keys
-      raise NotImplementedError
-    end
-
     def to_hash
       raise NotImplementedError
     end
 
     def delete(key)
-      self.delete_keys_start_with(key.to_s)
+      raise NotImplementedError
     end
 
-    def delete_keys_start_with(key)
+    def keys
+      raise NotImplementedError
+    end
+
+    def delete_all(key)
       keys_starting_with(key.to_s).each do |each|
-        self.basic_delete(each)
+        self.delete(each)
       end
     end
 

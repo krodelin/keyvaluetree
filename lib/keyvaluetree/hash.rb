@@ -74,6 +74,10 @@ module KeyValueTree
       @store.delete(key_path_string(key.to_s))
     end
 
+    def delete_all(key)
+      @store.delete_all(key_path_string(key.to_s))
+    end
+
     def keys
       @store.keys_starting_with(key_path_string()).map { |each| each.split(".").first }.uniq
     end

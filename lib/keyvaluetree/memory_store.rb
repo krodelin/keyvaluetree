@@ -14,7 +14,7 @@ module KeyValueTree
       @hash[key.to_s] = value
     end
 
-    def basic_delete(key)
+    def delete(key)
       @hash.delete(key.to_s)
     end
 
