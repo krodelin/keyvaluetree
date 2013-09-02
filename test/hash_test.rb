@@ -66,7 +66,7 @@ class HashTest < Test::Unit::TestCase
       @root.one.a.delete(:A)
       assert_equal 3, @store.keys.size
 
-      @root.delete(:two)
+      @root.delete_all(:two)
       assert_equal 1, @store.keys.size
     end
 

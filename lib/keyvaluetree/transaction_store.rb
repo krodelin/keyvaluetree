@@ -24,7 +24,7 @@ module KeyValueTree
       end
     end
 
-    def basic_delete(key)
+    def delete(key)
       @access_mutex.synchronize do
         @changed_properties.delete(key)
         @deleted_property_keys << key
