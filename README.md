@@ -1,6 +1,6 @@
-# Keyvaluetree
+# keyvaluetree
 
-TODO: Write a gem description
+keyvalutree provides an wrapper around a flat KeyValueStore which emulates an hierachical store (i.e. nested Hashes).
 
 ## Installation
 
@@ -18,7 +18,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Simple
+
+    config = KeyValueTree::Hash.new()
+
+    config.server.name = 'localhost'
+    config.server['port'] = '123'
+
+    config.server['name'] => 'localhost'
+    config.server.port = '123'
+
+### Using explicit MemoryStore
+
+    config = KeyValueTree::Hash.new(KeyValueTree::MemoryStore.new())
+
+    config.server.name = 'localhost'
+    config.server['port'] = '123'
+
+    config.server['name'] => 'localhost'
+    config.server.port = '123'
 
 ## Contributing
 
